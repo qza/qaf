@@ -1,0 +1,101 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:form>
+		<ice:panelGroup>
+			<ice:outputText value="Columns sinopsis" />
+			<ice:outputText id="columnsText" value="Columns text" />
+		</ice:panelGroup>
+
+		<ice:panelGroup>
+
+			<!-- Select the number of columns -->
+			<ice:outputLabel for="columnsInput" value="Broj kolona" />
+			<ice:selectOneMenu id="columnsInput" partialSubmit="true"
+				valueChangeListener="#{columnsBean.updateTableRows}"
+				value="#{columnsBean.rows}">
+				<f:selectItems id="columnsItms" value="#{columnsBean.rowsItems}" />
+			</ice:selectOneMenu>
+
+			<ice:outputLabel value="Tabela" />
+			<ice:selectOneMenu id="entityInput" partialSubmit="true"
+				valueChangeListener="#{columnsBean.updateTableEntity}"
+				value="#{columnsBean.selectedEntityName}">
+				<f:selectItems id="entityItms" value="#{columnsBean.entityItems}" />
+			</ice:selectOneMenu>
+
+		</ice:panelGroup>
+
+		<ice:panelGroup />
+
+		<ice:panelGroup>
+
+			<!-- dataTable with columns component -->
+			<ice:dataTable id="dataTbl" var="item"
+				value="#{columnsBean.rowDataModel}" columnClasses="columnsColumn"
+				rows="#{columnsBean.rows}">
+				<ice:columns id="columnDataModel"
+					value="#{columnsBean.columnDataModel}" var="column">
+					<f:facet name="header">
+						<ice:panelGroup>
+							<ice:outputText id="rowData"
+								value="#{columnsBean.columnDataModel.rowData}" />
+						</ice:panelGroup>
+					</f:facet>
+					<!-- display the table cell values-->
+					<ice:panelGroup style="text-align: center; white-space: nowrap;">
+						<ice:outputText id="cellValue" value="#{columnsBean.cellValue}" />
+					</ice:panelGroup>
+				</ice:columns>
+			</ice:dataTable>
+
+
+			<ice:dataPaginator id="dataScroll_388" for="dataTbl"
+				paginator="true" fastStep="3" paginatorMaxPages="4">
+				<f:facet name="first">
+					<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-first.gif"
+						style="border:none;" title="First Page" />
+				</f:facet>
+				<f:facet name="last">
+					<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-last.gif"
+						style="border:none;" title="Last Page" />
+				</f:facet>
+				<f:facet name="previous">
+					<ice:graphicImage
+						url="./xmlhttp/css/xp/css-images/arrow-previous.gif"
+						style="border:none;" title="Previous Page" />
+				</f:facet>
+				<f:facet name="next">
+					<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-next.gif"
+						style="border:none;" title="Next Page" />
+				</f:facet>
+				<f:facet name="fastforward">
+					<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-ff.gif"
+						style="border:none;" title="Fast Forward" />
+				</f:facet>
+				<f:facet name="fastrewind">
+					<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-fr.gif"
+						style="border:none;" title="Fast Backwards" />
+				</f:facet>
+			</ice:dataPaginator>
+			<ice:dataPaginator id="dataScroll_2864" for="dataTbl"
+				rowsCountVar="rowsCount"
+				displayedRowsCountVar="displayedRowsCountVar"
+				firstRowIndexVar="firstRowIndex" lastRowIndexVar="lastRowIndex"
+				pageCountVar="pageCount" pageIndexVar="pageIndex">
+				<ice:outputFormat
+					value="{0} cars found, displaying {1} car(s), from {2} to {3}. Page {4} / {5}."
+					styleClass="standard">
+					<f:param value="#{rowsCount}" />
+					<f:param value="#{displayedRowsCountVar}" />
+					<f:param value="#{firstRowIndex}" />
+					<f:param value="#{lastRowIndex}" />
+					<f:param value="#{pageIndex}" />
+					<f:param value="#{pageCount}" />
+				</ice:outputFormat>
+			</ice:dataPaginator>
+
+		</ice:panelGroup>
+	</ice:form>
+</ice:panelGroup>
+

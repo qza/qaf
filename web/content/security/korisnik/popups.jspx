@@ -1,0 +1,47 @@
+<ice:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+	<!-- Korisnik default message -->
+	<ice:panelPopup modal="true" styleClass="icePanelPopup"	rendered="#{korisnikBean.renderedPopup}">
+		<f:facet name="header">
+			<table width="100%">
+				<tr>
+					<td>
+						<div style="text-align: left; width: 50%; float: left;">
+							<ice:outputText style="color: #FFFFFF;"
+								value="#{msg[korisnikBean.activeModalPopup.title]}" />
+						</div>
+						<div style="text-align: right; width: 50%; float: left;">
+							<ice:commandButton
+								rendered="#{!korisnikBean.activeModalPopup.withButtons}"
+								image="images/cancel_round.png"
+								actionListener="#{korisnikBean.zatvoriPopup}" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</f:facet>
+		<f:facet name="body">
+			<ice:panelGrid width="100%" cellpadding="0" cellspacing="0" column="2">
+				<ice:panelGrid column="2">
+					<ice:graphicImage value="#{korisnikBean.activeModalPopup.type.image}"/>
+					<ice:outputText
+						value="#{korisnikBean.activeModalPopup.message}" />
+					<ice:outputText
+						value="#{korisnikBean.activeModalPopup.conclusion}" />
+				</ice:panelGrid>
+				<ice:panelGrid rendered="#{korisnikBean.activeModalPopup.withButtons}" columns="2" >
+					<ice:commandButton
+						image="images/valid_green.png"
+						actionListener="#{korisnikBean.okPopup}" />
+					<ice:commandButton
+						image="images/cancel32.png"
+						actionListener="#{korisnikBean.zatvoriPopup}" />
+				</ice:panelGrid>
+			</ice:panelGrid>
+		</f:facet>
+	</ice:panelPopup>
+
+</ice:panelGroup>

@@ -1,0 +1,16 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ice="http://www.icesoft.com/icefaces/component"
+     xmlns:f="http://java.sun.com/jsf/core">
+
+     <ice:form>
+	     <ice:panelGrid columns="5">
+    		 <ice:outputText value="Qaf by Qza, #{msg.Korisnik}: "></ice:outputText>
+		     <ice:outputText value="#{login.remoteUser}" />
+   		     <ice:outputText value="  " />
+   		     <ice:outputText value="  " />
+             <ice:commandLink id="link" actionListener="#{login.logout}">
+				<ice:outputText value="#{msg.logout}"/>
+			 </ice:commandLink>
+     	 </ice:panelGrid>
+   	 </ice:form>
+</div>

@@ -1,0 +1,25 @@
+package ${daoPackage};
+
+/**
+ * @author Qza
+ *
+ */
+public abstract class DAOFactory {
+
+    public static final Class HIBERNATE = HibernateDAOFactory.class;
+
+    public static DAOFactory instance(Class factory) {
+        try {
+            return (DAOFactory)factory.newInstance();
+        } catch (Exception ex) {
+            throw new RuntimeException("Couldn't create DAOFactory: " + factory);
+        }
+    }
+
+    // Add your DAO interfaces here
+    #foreach( $dao in $daoList )
+public abstract ${dao}DAO get${dao}DAO();
+
+	#end
+
+}

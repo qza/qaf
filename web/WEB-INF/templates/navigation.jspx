@@ -1,0 +1,27 @@
+<ice:form
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        id="navigationMenuForm">
+    <div class="navTree">
+        <ice:tree
+                value="#{treeNavigation.model}"
+                var="item"
+                hideRootNode="true"
+                binding="#{treeNavigation.treeComponent}">
+            <ice:treeNode>
+                <f:facet name="content">
+                    <ice:panelGroup style="display: inline">
+                        <ice:commandLink
+                                actionListener="#{item.userObject.contentVisibleAction}">
+                            <ice:outputText
+                                    value="#{msg[item.userObject.menuDisplayText]}"/>
+                        </ice:commandLink>
+                    </ice:panelGroup>
+                </f:facet>
+
+            </ice:treeNode>
+        </ice:tree>
+    </div>
+
+</ice:form>

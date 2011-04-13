@@ -1,0 +1,15 @@
+package ${managerPackage};
+
+/**
+ * @author Qza
+ *
+ */
+public interface ManagerFactory {
+
+    // Manager interfaces
+    #foreach( $entity in $entityList )
+public ${entity}Manager get${entity}Manager();
+
+	#end
+
+}

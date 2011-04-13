@@ -1,0 +1,44 @@
+#set($sufix_DAO = "DAO")
+package ${daoPackage};
+
+import org.hibernate.Session;
+
+import org.qaf.common.model.HibernateUtil;
+import org.qaf.common.model.dao.GenericDAOImpl;
+
+/**
+ * @author Qza
+ *
+ */
+public class HibernateDAOFactory extends DAOFactory{
+
+	#foreach( $dao in $daoList )
+	#set($lower = $dao.toLowerCase())
+private ${dao}DAO $lower$sufix_DAO;
+	#end
+
+	protected Session getCurrentSession(){
+		return HibernateUtil.currentSession();
+	}
+
+	private GenericDAOImpl instantiateDao(Class daoClass){
+		try {
+			GenericDAOImpl dao = (GenericDAOImpl)daoClass.newInstance();
+			return dao;
+		} catch (Exception e){
+			throw new RuntimeException("Can not instantiate Dao: "+daoClass, e);
+		}
+	}
+
+	#foreach( $dao in $daoList )
+	#set($lower = $dao.toLowerCase())
+@Override
+	public ${dao}DAO get${dao}DAO() {
+		if($lower$sufix_DAO == null){
+			$lower$sufix_DAO = (${dao}DAO)instantiateDao(${dao}DAOImpl.class);
+		}
+		return $lower$sufix_DAO;
+	}
+	#end
+
+}

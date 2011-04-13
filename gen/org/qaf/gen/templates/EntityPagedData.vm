@@ -1,0 +1,44 @@
+#set($manager = "Manager")
+#set($entityLower = $entity.toLowerCase())
+#set($entityManager = ${entityLower}+""+${manager})
+
+package ${supportPackage};
+
+import ${managerPackage}.ManagerFactoryImpl;
+import ${managerPackage}.${entity}Manager;
+import ${entityPackage}.${entity};
+import org.qaf.waf.pagin.DataPage;
+import org.qaf.waf.pagin.PagedListDataModel;
+
+/**
+ * @author Qza
+ *
+ */
+public class ${entity}PagedData extends PagedListDataModel<${entity}> {
+
+	private static int PAGE_SIZE = 10;
+
+	private ${entity} search;
+
+	private ${entity}Manager $entityManager = ManagerFactoryImpl.getInstance().get${entity}Manager();
+
+	public ${entity}PagedData(${entity} search) {
+		super(PAGE_SIZE);
+		this.search = search;
+	}
+
+	public ${entity}PagedData(boolean reset){
+		super(PAGE_SIZE);
+		if(reset) this.search = new ${entity}();
+	}
+
+	public ${entity}PagedData(boolean reset, int pageSize){
+		super(pageSize);
+		if(reset) this.search = new ${entity}();
+	}
+
+	public DataPage<${entity}> fetchPage(int startRow, int pageSize) {
+		return ${entityManager}.getPagedData(search, startRow, pageSize);
+	}
+
+}

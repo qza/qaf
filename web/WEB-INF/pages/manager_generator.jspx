@@ -1,0 +1,50 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:form id="managerGeneratorForm">
+
+		<fieldset class="fieldset_base" style="width: 450px">
+		<p>
+			<ice:outputText value="Qaf Manager Generator" />
+			<ice:outputText value="" />
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="Project location"></ice:outputLabel>
+			<ice:inputText id="projectLocation" value="#{qafManagerGenerator.projectLocation}" size="40"/>
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="Source folder"  ></ice:outputLabel>
+			<ice:inputText id="sourceFolder" value="#{qafManagerGenerator.sourceFolder}" size="40"/>
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="DAO Package"  ></ice:outputLabel>
+			<ice:inputText id="packageDAO" value="#{qafManagerGenerator.daoPackage}" size="40"/>
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="Manager Package"  ></ice:outputLabel>
+			<ice:inputText id="packageManager" value="#{qafManagerGenerator.managerPackage}" size="40"/>
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="Support Package"  ></ice:outputLabel>
+			<ice:inputText id="packageSupport" value="#{qafManagerGenerator.supportPackage}" size="40"/>
+		</p>
+		<p>
+			<ice:outputLabel styleClass="label" value="Entiteti" />
+		</p>
+		<p>
+			<ice:selectManyMenu id="itemsSelect" style="height:150px;"
+				value="#{qafManagerGenerator.selectedEntities}" partialSubmit="true"
+				valueChangeListener="#{qafManagerGenerator.izmena}">
+				<f:selectItems id="SlctCarItms"
+					value="#{qafManagerGenerator.entitiesItems}" />
+			</ice:selectManyMenu>
+		</p>
+		<p align="left">
+			<ice:commandButton id="poruka" value="Generisi"
+				actionListener="#{qafManagerGenerator.generisiAction}" />
+		</p>
+		</fieldset>
+		<ice:messages id="poruke"/>
+	</ice:form>
+</ice:panelGroup>
+

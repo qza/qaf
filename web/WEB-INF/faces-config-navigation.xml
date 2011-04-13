@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE faces-config PUBLIC
+        "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+        "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+
+	<navigation-rule>
+	    <from-view-id>/WEB-INF/templates/welcome.jspx</from-view-id>
+	    <navigation-case>
+	      <description>
+	        Choose locale changes locale then returns to welcome page
+	      </description>
+	      <from-outcome>chooseLocale</from-outcome>
+	      <to-view-id>/WEB-INF/templates/welcome.jspx</to-view-id>
+	    </navigation-case>
+	 </navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>idi_kuci</from-outcome>
+			<to-view-id>/WEB-INF/pages/home.iface</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

@@ -1,0 +1,12 @@
+package ${daoPackage};
+
+import org.qaf.common.model.dao.GenericDAOImpl;
+import ${entityPackage}.${dao};
+
+/**
+ * @author Qza
+ *
+ */
+public class ${dao}DAOImpl extends GenericDAOImpl<${dao}, Integer> implements ${dao}DAO{
+
+}

@@ -1,0 +1,40 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:form id="noviKorisnikForm">
+	  	<fieldset class="fieldset" style="width: 600px;">
+			<p>
+				<ice:outputText value="Korisnicko ime" styleClass="fieldsetLabel" />
+				<ice:inputText id="korisnickoIme" size="30"
+							   value="#{korisnikBean.korisnik.korisnickoIme}">
+					<f:converter converterId="nullConverter"/>
+					<f:validator validatorId="requiredValidator" />
+				</ice:inputText>
+				<ice:message style="color:red;" id="korisnickoImeErr" for="korisnickoIme"/>
+			</p>
+			<p>
+				<ice:outputText value="Lozinka" styleClass="fieldsetLabel" />
+				<ice:inputSecret id="lozinka" size="30"
+								 value="#{korisnikBean.korisnik.lozinka}" >
+					<f:converter converterId="nullConverter"/>
+					<f:validator validatorId="requiredValidator" />
+				</ice:inputSecret>
+				<ice:message style="color:red;" id="lozinkaErr" for="lozinka"/>
+			</p>
+			<p>
+				<ice:outputText value="Email" styleClass="fieldsetLabel" />
+				<ice:inputText id="email" value="#{korisnikBean.korisnik.email}" size="30">
+					<f:converter converterId="nullConverter"/>
+					<f:validator validatorId="emailValidator" />
+				</ice:inputText>
+				<ice:message style="color:red;" id="emailErr" for="email"/>
+			</p>
+			<p align="right">
+				<ice:commandButton value="Nazad" image="images/back_green.png"
+								   immediate = "true" actionListener="#{korisnikBean.nazad}"/>
+				<ice:commandButton value="Zapamti" image="images/valid_green.png"
+									actionListener="#{korisnikBean.promeniKorisnika}"/>
+			</p>
+		</fieldset>
+	</ice:form>
+</ice:panelGroup>

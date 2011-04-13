@@ -1,0 +1,5 @@
+<span xmlns:ice="http://www.icesoft.com/icefaces/component">
+    <param name="inputField" value="#{value}"/>
+    <ice:outputLabel value="#{inputField.label}" styleClass="inputLabel"/>
+    <ice:inputText value="#{inputField.value}" styleClass="inputValue"/>
+</span>

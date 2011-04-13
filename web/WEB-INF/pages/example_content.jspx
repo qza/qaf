@@ -1,0 +1,38 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ice="http://www.icesoft.com/icefaces/component"
+     xmlns:c="http://java.sun.com/jstl/core"
+     xmlns:ft="http://www.facelettutorial.com/jsf">
+         <ice:form>
+             <ice:panelGrid columns="1">
+
+                 <ice:outputText>
+                     The following is a breif example on how a Custom Tag can be
+                     implmented in a Facelets application.  The following form
+                     was implemented using just 3 lines of code instead of the
+                     10+ lines that normally are needed.
+                 </ice:outputText>
+                 <br/>
+                 <ice:outputText>
+                     Creating custom tags can be beneficial, it can help
+                     eliminate duplication of code.  For our example we have combined a
+                     label and an input text tag into one tag.
+                 </ice:outputText>
+                 <br/>
+                 <br/>
+                 <c:forEach var="inputField" items="#{inputFieldManager.fields}">
+                     <ft:inputField value="#{inputField}"/>
+                 </c:forEach>
+                 <br/>
+                 <ice:commandButton value="Register" type="submit"
+                                    action="#{inputFieldManager.register}"/>
+
+                 <ice:commandLink id="link" action="#{login.logout}">
+						<ice:outputText value="Logout"/>
+		 		</ice:commandLink>
+
+		 		<ice:commandButton value="Logout" id="button" action="#{login.logout}" type="submit"/>
+
+                 <ice:messages/>
+             </ice:panelGrid>
+         </ice:form>
+</div>

@@ -1,0 +1,67 @@
+#set($entityLower = $entity.toLowerCase())
+package ${managerPackage};
+
+import ${entityPackage}.${entity};
+import org.qaf.common.model.HibernateUtil;
+import org.qaf.waf.pagin.DataPage;
+
+import java.math.BigInteger;
+import java.util.List;
+import java.util.Iterator;
+
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+
+/**
+ * @author Qza
+ *
+ */
+public class ${entity}ManagerImpl extends BaseManagerImpl implements ${entity}Manager {
+
+	public List<${entity}> fetchAll() {
+		return ${entityLower}DAO.fetchAll();
+	}
+
+	public ${entity} fetch(Integer id) {
+		if(id == null) return null;
+		return ${entityLower}DAO.fetch(id);
+	}
+
+	public List<${entity}> fetch(${entity} ${entityLower}, String[] excludeProperty) {
+		if(${entityLower} == null) return null;
+		return ${entityLower}DAO.findByExample(${entityLower}, excludeProperty);
+	}
+
+	public ${entity} save(${entity} ${entityLower}) {
+		HibernateUtil.beginTransaction();
+		${entityLower}DAO.saveOrUpdate(${entityLower});
+		HibernateUtil.commitTransation();
+		return ${entityLower};
+	}
+
+	public void delete(${entity} ${entityLower}) {
+		HibernateUtil.beginTransaction();
+		${entityLower}DAO.deleteEntity(${entityLower});
+		HibernateUtil.commitTransation();
+	}
+
+	public void delete(List<${entity}> ${entityLower}List){
+		Iterator<${entity}> it = ${entityLower}List.iterator();
+		HibernateUtil.beginTransaction();
+		while(it.hasNext()){
+			${entity} ${entityLower} = it.next();
+			${entityLower}DAO.deleteEntity(${entityLower});
+		}
+		HibernateUtil.commitTransation();
+	}
+
+	public DataPage<${entity}> getPagedData(${entity} search, String searchText, int startRow, int maxResult){
+		return null;
+	}
+}
+

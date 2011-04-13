@@ -1,0 +1,6 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ice="http://www.icesoft.com/icefaces/component">
+         <ice:outputText>
+             *********************Qza app framework*********************
+         </ice:outputText>
+</div>

@@ -1,0 +1,35 @@
+package ${managerPackage};
+
+/**
+ * @author Qza
+ *
+ */
+public class ManagerFactoryImpl implements ManagerFactory {
+
+    // Manager interfaces
+#foreach( $entity in $entityList )
+#set($lower = $entity.toLowerCase())
+	private ${entity}Manager ${lower}Manager;
+
+#end
+
+	private ManagerFactoryImpl(){}
+
+	protected static final class InstanceHolder {
+		protected static final ManagerFactoryImpl factory = new ManagerFactoryImpl();
+	}
+
+	public static ManagerFactory getInstance(){
+		return InstanceHolder.factory;
+	}
+
+#foreach( $entity in $entityList )
+#set($lower = $entity.toLowerCase())
+	public ${entity}Manager get${entity}Manager() {
+		if(${lower}Manager == null){
+			${lower}Manager = new ${entity}ManagerImpl();
+		}
+		return ${lower}Manager;
+	}
+#end
+}

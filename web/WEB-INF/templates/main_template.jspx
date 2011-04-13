@@ -1,0 +1,44 @@
+<f:view xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:c="http://java.sun.com/jstl/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ice:outputDeclaration doctypeRoot="HTML"
+	                       doctypePublic="-//W3C//DTD XHTML 1.0 Transitional//EN"
+	                       doctypeSystem="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+
+	<ice:loadBundle basename="org.qaf.waf.language.QafMessages" var="msg"/>
+
+	<html>
+		<head>
+		    <!-- page title param passed in by param -->
+		    <title>Title</title>
+		    <meta http-equiv="imagetoolbar" content="no" />
+		    <meta name="keywords" content="" />
+		    <meta name="description" content="" />
+		    <link href="stylesheets/default.css" rel="stylesheet" type="text/css"/>
+		    <link rel="icon" href="images/favicon.ico" type="image/ico"/>
+			<link rel="shortcut icon" href="images/favicon.ico"/>
+		</head>
+		<body>
+			<div class="page">
+			    <div class="header">
+			        <ui:include src="/WEB-INF/templates/header.jspx"/>
+			    </div>
+			    <div class="navigation">
+			        <ui:include src="/WEB-INF/templates/navigation.jspx"/>
+			    </div>
+			    <div class="content">
+			        <ui:insert name="content">
+			            Default Content
+			        </ui:insert>
+			    </div>
+			    <div class="footer">
+			        <ui:include src="/WEB-INF/templates/footer.jspx"/>
+			    </div>
+			</div>
+		</body>
+	</html>
+
+</f:view>

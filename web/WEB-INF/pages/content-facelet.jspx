@@ -1,0 +1,14 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:panelGroup>
+		<h2>
+			<ice:outputText value="#{msg[navigation.selectedPanel.menuContentTitle]}" />
+		</h2>
+		<div class="demoWindow">
+			<ui:include src="#{navigation.selectedPanel.menuContentInclusionFile}" />
+		</div>
+	</ice:panelGroup>
+</div>

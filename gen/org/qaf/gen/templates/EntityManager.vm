@@ -1,0 +1,28 @@
+#set($entityLower = $entity.toLowerCase())
+package ${managerPackage};
+
+import java.util.List;
+import org.qaf.waf.pagin.DataPage;
+import ${entityPackage}.${entity};
+
+/**
+ * @author Qza
+ *
+ */
+public interface ${entity}Manager {
+
+	public List<${entity}> fetchAll();
+
+	public ${entity} fetch(Integer id);
+
+	public List<${entity}> fetch(${entity} ${entityLower}, String[] excludeProperty);
+
+	public ${entity} save(${entity} ${entityLower});
+
+	public void delete(${entity} ${entityLower});
+
+	public void delete(List<${entity}> ${entityLower}List);
+
+	public DataPage<${entity}> getPagedData(${entity} search, String searchText, int startRow, int maxResult);
+
+}

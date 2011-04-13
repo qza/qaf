@@ -1,0 +1,10 @@
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib>
+    <namespace>http://www.facelettutorial.com/jsf</namespace>
+    <tag>
+        <tag-name>inputField</tag-name>
+        <source>../../components/inputField-component.jspx</source>
+    </tag>
+</facelet-taglib>

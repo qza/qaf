@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE faces-config PUBLIC
+        "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+        "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+
+	<managed-bean>
+		<description>Podesavanje lokalizacije
+		</description>
+		<managed-bean-name>welcomeBean</managed-bean-name>
+		<managed-bean-class>org.qaf.waf.beans.WelcomeBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+    <managed-bean>
+		<description>Prati celokupnu navigaciju u aplikaciji
+		</description>
+		<managed-bean-name>NavigationSessionHolder</managed-bean-name>
+		<managed-bean-class>org.qaf.waf.navigation.NavigationDataHolder
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+        <managed-bean-name>qafDaoGenerator</managed-bean-name>
+        <managed-bean-class>
+            org.qaf.gen.QafDaoGeneratorBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+  	<managed-bean>
+        <managed-bean-name>qafManagerGenerator</managed-bean-name>
+        <managed-bean-class>
+            org.qaf.gen.QafManagerGeneratorBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+	<managed-bean>
+        <managed-bean-name>columnsBean</managed-bean-name>
+        <managed-bean-class>
+            org.qaf.waf.beans.ColumnsBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+		<managed-bean-name>inputFieldManager</managed-bean-name>
+		<managed-bean-class>
+			org.qaf.waf.ui.InputFieldManager
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+    <description>
+        </description>
+    <managed-bean-name>navigation</managed-bean-name>
+    <managed-bean-class>
+             org.qaf.waf.content.NavigationBean
+        </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+    <managed-bean>
+    <description>
+            Backing bean for tree naviagation.
+    </description>
+    <managed-bean-name>treeNavigation</managed-bean-name>
+    <managed-bean-class>
+            org.qaf.waf.content.TreeNavigation
+        </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+</faces-config>

@@ -1,0 +1,43 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:form id="daoGeneratorForm">
+
+		<fieldset class="fieldset_base" style="width: 450px">
+			<p>
+				<ice:outputText value="Qaf DAO Generator" />
+				<ice:outputText value="" />
+			</p>
+			<p>
+				<ice:outputLabel value="DAO Package"  ></ice:outputLabel>
+				<ice:inputText id="package" value="#{qafDaoGenerator.daoPackage}" size="40"/>
+			</p>
+			<p>
+				<ice:outputLabel value="Project location"></ice:outputLabel>
+				<ice:inputText id="projectLocation" value="#{qafDaoGenerator.projectLocation}" size="40"/>
+			</p>
+			<p>
+				<ice:outputLabel styleClass="label" value="Source folder"  ></ice:outputLabel>
+				<ice:inputText id="sourceFolder" value="#{qafDaoGenerator.sourceFolder}" size="40"/>
+			</p>
+			<p>
+				<ice:outputLabel value="Entiteti" />
+			</p>
+			<p>
+				<ice:selectManyMenu id="itemsSelect" style="height:150px;"
+					value="#{qafDaoGenerator.selectedEntities}" partialSubmit="true"
+					valueChangeListener="#{qafDaoGenerator.izmena}">
+					<f:selectItems id="SlctCarItms"
+						value="#{qafDaoGenerator.entitiesItems}" />
+				</ice:selectManyMenu>
+			</p>
+			<p>
+				<ice:commandButton id="poruka" value="Generisi"
+					actionListener="#{qafDaoGenerator.generisiAction}" />
+			</p>
+		</fieldset>
+
+		<ice:messages id="poruke"/>
+	</ice:form>
+</ice:panelGroup>
+

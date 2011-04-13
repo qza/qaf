@@ -1,0 +1,73 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ice:form id="korisniciForm">
+		<ice:panelGrid cellpadding="0px" cellspacing="0px" columns="1" styleClass="tablePanel">
+						<ice:panelGrid cellpadding="0px" cellspacing="0px" columns="2" >
+							<ice:panelGrid cellpadding="4px" columns="5" width="80%">
+								<ice:commandButton value="Novi korisnik" image="images/plus.png" actionListener="#{korisnikBean.noviKorisnikPanel}"/>
+								<ice:commandButton value="Obrisi korisnika" image="images/minus.png" actionListener="#{korisnikBean.obrisiKorisnikaCheck}"/>
+								<ice:commandButton value="Promeni korisnika" image="images/pencil.png"  actionListener="#{korisnikBean.promeniKorisnikaPanel}"/>
+								<ice:commandButton value="Stampa" image="images/printer.png"  actionListener="#{korisnikBean.stampaKorisnik}"/>
+								<ice:commandButton value="Osvezi" image="images/captcha_refresh.png"  actionListener="#{korisnikBean.osvezi}"/>
+							</ice:panelGrid>
+							<ice:panelGrid cellpadding="4px" columns="2" align="right">
+								<ice:inputText actionListener="#{korisnikBean.traziKorisnika}" value="#{korisnikBean.searchText}"/>
+  							    <ice:commandButton value="Trazi" image="images/magnify.png" actionListener="#{korisnikBean.traziKorisnik}"></ice:commandButton>
+							</ice:panelGrid>
+						</ice:panelGrid>
+						<ice:dataTable id="tabelaKorisnici"
+						    binding="#{korisnikBean.baseTable}"
+							value="#{korisnikBean.data}"
+							var="kVar"
+							rows="#{korisnikBean.pageSize}"
+							sortColumn="#{korisnikBean.data.sortProperty}"
+			                sortAscending="#{korisnikBean.data.ascending}"
+							styleClass="tableStyle"
+							columnClasses="sifraColumn, nazivColumn, opisColumn, datumVremeColumn"
+			                rowClasses="oddRow, evenRow"
+			                cellpadding="4"
+			                cellspacing="4"
+			                headerClasses="tableHeader_c, tableHeader_l, tableHeader_l, tableHeader_c">
+				            <ice:column>
+				            <ice:rowSelector id="selected"
+                                 value="#{kVar.selected}"
+                                 multiple="true"
+                                 enhancedMultiple="true"
+                                 selectedClass="selected"
+                                 selectionListener="#{korisnikBean.rowSelectionListener}"/>
+				                <f:facet name="header">
+				                    <ice:commandLink value="Korisnicko ime" actionListener="#{korisnikBean.sortiraj}">
+					                    <f:param name="sort" value="korisnickoIme"/>
+			                    	</ice:commandLink>
+				                </f:facet>
+				                <ice:commandLink value="#{kVar.korisnickoIme}" actionListener="#{korisnikBean.promeniKorisnikaPanel}">
+					                    <f:param name="korisnikId" value="#{kVar.id}"/>
+		                    	</ice:commandLink>
+			                </ice:column>
+				            <ice:column>
+				                <f:facet name="header">
+				                    <ice:commandLink value="Email" actionListener="#{korisnikBean.sortiraj}">
+				                    	<f:param name="sort" value="email"/>
+			                    	</ice:commandLink>
+				                </f:facet>
+				                <ice:outputText value="#{kVar.email}"/>
+				            </ice:column>
+				            <ice:column>
+				                <f:facet name="header">
+				                    <ice:commandLink value="Poslednji login" actionListener="#{korisnikBean.sortiraj}">
+					                    <f:param name="sort" value="poslednjiLogin"/>
+			                    	</ice:commandLink>
+				                </f:facet>
+				                <ice:outputText value="#{kVar.poslednjiLogin}"/>
+				            </ice:column>
+						</ice:dataTable>
+					</ice:panelGrid>
+					<ui:decorate template="../../templates/paginator.jspx">
+			       		<ui:param name="tableName" value="tabelaKorisnici" />
+			       </ui:decorate>
+  				   <ui:include src="/content/security/korisnik/popups.jspx"/>
+		<ice:messages id="poruke"/>
+	</ice:form>
+</ice:panelGroup>

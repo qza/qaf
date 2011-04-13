@@ -1,0 +1,22 @@
+package ${managerPackage};
+
+import ${daoPackage}.DAOFactory;
+#foreach( $entity in $entityList )
+import ${daoPackage}.${entity}DAO;
+#end
+
+/**
+ * @author Qza
+ *
+ */
+public class BaseManagerImpl {
+
+	protected DAOFactory factory = DAOFactory.instance(DAOFactory.HIBERNATE);
+#foreach( $entity in $entityList )
+#set($lower = $entity.toLowerCase())
+	protected ${entity}DAO ${lower}DAO = factory.get${entity}DAO();
+
+#end
+	public BaseManagerImpl(){}
+
+}

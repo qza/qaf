@@ -1,0 +1,51 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ice:panelGrid>
+	<ice:dataPaginator id="dataScroll_3" for="#{tableName}"
+		paginator="true" fastStep="3" paginatorMaxPages="4">
+		<f:facet name="first">
+			<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-first.gif"
+				style="border:none;" title="First Page" />
+		</f:facet>
+		<f:facet name="last">
+			<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-last.gif"
+				style="border:none;" title="Last Page" />
+		</f:facet>
+		<f:facet name="previous">
+			<ice:graphicImage
+				url="./xmlhttp/css/xp/css-images/arrow-previous.gif"
+				style="border:none;" title="Previous Page" />
+		</f:facet>
+		<f:facet name="next">
+			<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-next.gif"
+				style="border:none;" title="Next Page" />
+		</f:facet>
+		<f:facet name="fastforward">
+			<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-ff.gif"
+				style="border:none;" title="Fast Forward" />
+		</f:facet>
+		<f:facet name="fastrewind">
+			<ice:graphicImage url="./xmlhttp/css/xp/css-images/arrow-fr.gif"
+				style="border:none;" title="Fast Backwards" />
+		</f:facet>
+	</ice:dataPaginator>
+	<ice:dataPaginator id="dataScroll_2" for="#{tableName}"
+		rowsCountVar="rowsCount" displayedRowsCountVar="displayedRowsCountVar"
+		firstRowIndexVar="firstRowIndex" lastRowIndexVar="lastRowIndex"
+		pageCountVar="pageCount" pageIndexVar="pageIndex">
+		<ice:outputFormat
+			value="#{msg.Strana} {4} / {5}, {0} #{msg.ukupno}."
+			styleClass="standard">
+			<f:param value="#{rowsCount}" />
+			<f:param value="#{displayedRowsCountVar}" />
+			<f:param value="#{firstRowIndex}" />
+			<f:param value="#{lastRowIndex}" />
+			<f:param value="#{pageIndex}" />
+			<f:param value="#{pageCount}" />
+		</ice:outputFormat>
+	</ice:dataPaginator>
+</ice:panelGrid>
+</div>
